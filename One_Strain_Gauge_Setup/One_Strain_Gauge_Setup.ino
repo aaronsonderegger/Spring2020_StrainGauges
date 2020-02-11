@@ -1,19 +1,20 @@
 //** Pre-Compiling Things **
 #include "C:\Users\User\Desktop\Spring 2020 Research\Code\AveragingFilter\AverageFiltering.h"
 #include "C:\Users\User\Desktop\Spring 2020 Research\Code\AveragingFilter\AverageFiltering.c"
+#define __DEBUG__ true
+
+//** Structures **
 struct Forces{
   int VerticleForce;
   int HorizontalForce;
 };
-#define __DEBUG__ true
-
 
 //** Global Variables **
 const int StrainGaugeSensor = A0;
 const int StrainGaugeReferenceSensor = A1;
-int StrainReference = 0;
-int StrainReading = 0;
-int LegAngle = 0;
+int StrainReference[NumberOfReadings];
+int StrainReadings[NumberOfReadings];
+int LegAngle = 0;       // Need to Get this from main controller
 Forces CalculatedForces;
 
 
@@ -23,39 +24,29 @@ void setup() {
   // Need to initialize something to get the leg angle. Communication Protocol.
   // Need something to send the strain reading or force calculation to Brains/Controller
   Serial.begin(9600);
-  for(int i = 0; i < NumberOfReadings;++i){ 
-    StrainReference = UpdateFilter( analogRead(StrainGaugeReferenceSensor) );
-  }
-  RestartFilter();
-  if(__DEBUG__){
-    Serial.println("Strain:,Verticle:,Horizontal:");
-  }
+  StartFilter(StrainReference);
+  StartFilter(StrainReadings);
 }
 
 //** Main **
 void loop() {
   //** Gather Data From Sensors **
-  int red = analogRead(StrainGaugeSensor);
-  StrainReading = UpdateFilter( red );
-  int ref = analogRead(StrainGaugeReferenceSensor);
+  UpdateFilter(analogRead(StrainGaugeSensor), StrainReadings);
+  UpdateFilter(analogRead(StrainGaugeReferenceSensor), StrainReference);
 //  LegAngle = QueerySomething
 
   //** Process Data **
-  CalculatedForces.VerticleForce = StrainReading + 5;
-  CalculatedForces.HorizontalForce = StrainReading + 10;
+  // CalculatedForces.VerticleForce = GetFilteredSignal(StrainReadings);
+  // CalculatedForces.HorizontalForce = GetFilteredSignal(StrainReference);
   
   //** Send Data **
 //  sendData(Forces)
 
   //** Debuging Things **
   if(__DEBUG__){
-    Serial.print(StrainReading);
+    Serial.print(GetFilteredSignal(StrainReadings));
     Serial.print(" ");
-    Serial.print(red);
-    Serial.print(" ");
-    Serial.print(ref);
-    Serial.print(" ");
-    Serial.println(StrainReference);
+    Serial.println(GetFilteredSignal(StrainReference));
   }
   
 }

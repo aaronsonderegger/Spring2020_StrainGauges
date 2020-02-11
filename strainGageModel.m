@@ -27,6 +27,13 @@ R4 = 120;       % [ohm], Bottom
 %      Gnd
 
 % Governing Equation of a Wheatstone bridge.
+<<<<<<< HEAD
+=======
+% dRx = KR*Rx*epsilon;    Change of resistance KR approximately 2
+% Vout = 
+ 
+
+>>>>>>> 29ddd3d857c96044d829b9e4bf161ffbfae72654
 R5 = 1000;
 R6 = 1000;
 Vs = 4.96;
