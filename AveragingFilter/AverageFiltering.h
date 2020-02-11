@@ -7,8 +7,9 @@ void DebugFilter();
 #define InvalidFilterReading 2000			// The analog read function reads vaules of 0-1023
 
 // Write Test for these
-int GetFilteredSignal();
-int UpdateFilter(const int reading);
+int GetFilteredSignal(const int* signals);
+void StartFilter(int* readings);
+void UpdateFilter(const int reading);
 void RestartFilter();
 
 #endif
