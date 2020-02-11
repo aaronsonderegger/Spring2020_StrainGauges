@@ -27,9 +27,6 @@ R4 = 120;       % [ohm], Bottom
 %      Gnd
 
 % Governing Equation of a Wheatstone bridge.
-% Vout = 
- 
-
 R5 = 1000;
 R6 = 1000;
 Vs = 4.96;
@@ -39,4 +36,25 @@ Va = Vs*R4/(R2 + R4);
 
 
 Vout = Vb - Va
+
+
+
+%%
+disp('Running');
+angles = [-40:40];  % [deg]
+Weight = 155;       % [N]
+E = 70e9;           % [Pa]
+x1 = 0.06;          % [m]
+x2 = 0.08;          % [m]
+x3 = 0.06;          % [m]
+x4 = 0.08;          % [m]
+Moment = @(theta,x) Weight*x*cosd(theta);
+
+while(1)
+    for k = 1:length(angles)
+        sigma1 = 
+    end
+end
+
+
 
