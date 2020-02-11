@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include "AverageFiltering.h"
 
-#define TotalTests 6
+#define TotalTests 13
 
 // ** ProtoType Functions **
 int	Test1();	// Test of UpdateFilter(const int reading) Function, Test before anything is filtered
@@ -17,6 +17,7 @@ int Test13();	// Similar to test3
 int Test14();	// Similar to test4
 int Test15(); 	// Similar to test5
 int Test16();	// Similar to test6
+int Test17();	// Resets 1 filter but not others
 
 void ReadFile();	// This is a scratch to see if I can read a file the right way
 
@@ -39,6 +40,7 @@ int main()
 	testPassed += Test14();	
 	testPassed += Test15(); 	
 	testPassed += Test16();	
+	testPassed += Test17();
 
 	printf("%d of %d passed\n",testPassed, TotalTests );
 
@@ -75,7 +77,7 @@ int Test2()
 	int signals[NumberOfReadings];
 	StartFilter(signals);
 	UpdateFilter(sgnl, signals);
-	if(GetFilteredSignal(readings) == sgnl)
+	if(GetFilteredSignal(signals) == sgnl)
 	{
 		return 1;
 	}
@@ -94,7 +96,7 @@ int Test3()
 
 	int signals[NumberOfReadings];
 	StartFilter(signals);
-	for(int i = 1; i <= 20; ++i)
+	for(int i = 1; i <= NumberOfReadings; ++i)
 	{	
 		correctValue += i;
 		UpdateFilter(i, signals);
@@ -171,7 +173,7 @@ int Test6()
 	}
 	int tmp = GetFilteredSignal(signals);
 
-	printf("%d %d %d %d\n",correctValue,NumberOfReadings,correctValue/NumberOfReadings, tmp );
+	// printf("%d %d %d %d\n",correctValue,NumberOfReadings,correctValue/NumberOfReadings, tmp );
 	if(GetFilteredSignal(signals) == correctValue/NumberOfReadings)
 	{
 		return 1;
@@ -249,7 +251,7 @@ int Test13()
 	int correctValue3 = 0;
 	int lastNumber = 0;
 	// Signal1
-	for(int i = 1; i <= 20; ++i)
+	for(int i = 1; i <= NumberOfReadings; ++i)
 	{	
 		correctValue1 += i;
 		correctValue2 += 2*i;
@@ -361,10 +363,9 @@ int Test16()
 		UpdateFilter(2*i, signal2);
 		UpdateFilter(10 + i, signal3);
 	}
-	int tmp = GetFilteredSignal(signals);
 
-	printf("%d %d %d %d\n",correctValue,NumberOfReadings,correctValue/NumberOfReadings, tmp );
-	if(GetFilteredSignal(signal1) == correctValue/NumberOfReadings
+	// printf("%d %d %d\n", GetFilteredSignal(signal1), GetFilteredSignal(signal2), GetFilteredSignal(signal3));
+	if(GetFilteredSignal(signal1) == correctValue1/NumberOfReadings
 	   && GetFilteredSignal(signal2) == correctValue2/NumberOfReadings
 	   && GetFilteredSignal(signal3) == correctValue3/NumberOfReadings)
 	{
@@ -376,11 +377,51 @@ int Test16()
 	}
 }
 
+// Clear 1 signal but not the others
+int Test17()
+{
+	int signal1[NumberOfReadings];
+	int signal2[NumberOfReadings];
+	int signal3[NumberOfReadings];
+	StartFilter(signal1);
+	StartFilter(signal2);
+	StartFilter(signal3);
+
+	int correctValue1 = 0;
+	int correctValue2 = 0;
+	for(int i = 1; i <= 100; ++i)
+	{
+		if(i > 100 - NumberOfReadings)
+		{
+			correctValue1 += i;
+			correctValue2 += 2*i;
+		}
+		UpdateFilter(i, signal1);
+		UpdateFilter(2*i, signal2);
+		UpdateFilter(i + 10, signal3);
+	}
+
+	RestartFilter(signal3);
+	// printf("%d,%d,%d\n", GetFilteredSignal(signal1), GetFilteredSignal(signal2), GetFilteredSignal(signal3));
+	if(GetFilteredSignal(signal1) == correctValue1/NumberOfReadings
+	   && GetFilteredSignal(signal2) == correctValue2/NumberOfReadings
+	   && GetFilteredSignal(signal3) == InvalidFilterReading)
+	{
+		return 1;
+	}
+	else
+	{
+		printf("Test17 Failed\n");
+		return 0;
+	}
+}
+
 void ReadFile()
 {
 	int c;
 	FILE *file;
-	printf("Testing Reading Files\n");
+
+	printf("\nTesting Reading Files\n");
 	file = fopen("./TestCases/Test3.txt","r");
 	if (file)
 	{

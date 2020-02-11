@@ -41,7 +41,7 @@ void AppendSignals(const int reading, int* signals)
 int GetFilteredSignal(const int* signals);
 void StartFilter(int* signals);
 void UpdateFilter(const int reading, int* signals);
-void RestartFilter(*int signals);
+void RestartFilter(int* signals);
 
 
 void DebugFilter()
@@ -53,14 +53,14 @@ void StartFilter(int* signals)
 {
 	for(int i = 0; i < NumberOfReadings; ++i)
 	{
-		readings[i] = InvalidFilterReading; 
+		signals[i] = InvalidFilterReading; 
 	}
 }
 
 
 void UpdateFilter(const int reading, int* signals)
 {
-	AppendSignals(reading, int* signals);
+	AppendSignals(reading, signals);
 }
 
 
@@ -84,7 +84,7 @@ int GetFilteredSignal(const int* signals)
 	return value/length;
 }
 
-void RestartFilter()
+void RestartFilter(int* signals)
 {
 	for(int i = 0; i < NumberOfReadings; ++i)
 	{
