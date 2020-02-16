@@ -12,4 +12,6 @@ void StartFilter(int* readings);
 void UpdateFilter(const int reading, int* signals);
 void RestartFilter(int* signals);
 
+
+
 #endif

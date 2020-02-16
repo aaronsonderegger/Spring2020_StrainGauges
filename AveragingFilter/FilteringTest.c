@@ -26,6 +26,7 @@ int main()
 {
 	int testPassed = 0;
 	DebugFilter();
+	Aaron = 5;
 	// * Run Tests *
 	testPassed += Test1();
 	testPassed += Test2();
