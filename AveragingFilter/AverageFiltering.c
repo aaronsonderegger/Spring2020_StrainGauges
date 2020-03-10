@@ -36,14 +36,6 @@ void AppendSignals(const int reading, int* signals)
 }
 
 
-
-//** Public Functions ** 
-int GetFilteredSignal(const int* signals);
-void StartFilter(int* signals);
-void UpdateFilter(const int reading, int* signals);
-void RestartFilter(int* signals);
-
-
 void DebugFilter()
 {
 	DEBUG = true;

@@ -418,16 +418,34 @@ int Test17()
 
 void ReadFile()
 {
-	int c;
+	char c;
+	int value = 0;
 	FILE *file;
 
 	printf("\nTesting Reading Files\n");
 	file = fopen("./TestCases/Test3.txt","r");
 	if (file)
 	{
-		while((c = getc(file)) != EOF){
-			// putchar(c);
-			printf("%d\n", c);
+		while(1)
+		{
+			c = getc(file);
+			if(c >= '0' && c <= '9')
+			{
+				value *= 10;
+				value += c - '0';
+			}
+			if(c == 10)
+			{
+				printf("%d\n", value);
+				printf("Reading a new line\n");
+				value = 0;
+			}
+			if(c == EOF)
+			{
+				printf("%d\n", value);
+				break;
+			}
+
 		}
 		fclose(file);
 	}
