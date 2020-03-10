@@ -44,9 +44,14 @@ void loop() {
 
   //** Debuging Things **
   if(__DEBUG__){
+    Serial.print(analogRead(StrainGaugeSensor));
+    Serial.print(" ");
+    Serial.print(analogRead(StrainGaugeReferenceSensor));
+    Serial.print(" ");
     Serial.print(GetFilteredSignal(StrainReadings));
     Serial.print(" ");
     Serial.println(GetFilteredSignal(StrainReference));
+    
   }
   
 }
