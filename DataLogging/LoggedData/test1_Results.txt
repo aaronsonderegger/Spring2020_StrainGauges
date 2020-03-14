@@ -1,0 +1,10 @@
+Min for  Time [s] is 0.8106868
+Max for  Time [s] is 0.8805576
+Mean for  Time [s] is 0.8456222000000001
+Variance for  Time [s] is 0.0004068320491066636
+Standard Deviation for  Time [s] is 0.02017007806397049
+Min for Channel 0-Analog is 3.426
+Max for Channel 0-Analog is 3.46
+Mean for Channel 0-Analog is 3.4427593389691187
+Variance for Channel 0-Analog is 3.342814338484458e-05
+Standard Deviation for Channel 0-Analog is 0.005781707653007421

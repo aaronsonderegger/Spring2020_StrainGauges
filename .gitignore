@@ -4,3 +4,6 @@
 
 # Objects
 *.o
+
+# Python
+*.pyc
