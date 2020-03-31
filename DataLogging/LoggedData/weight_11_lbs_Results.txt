@@ -1,0 +1,68 @@
+Min for SG_A+90_test0 is 468
+Max for SG_A+90_test0 is 477
+Mean for SG_A+90_test0 is 472.822
+Variance for SG_A+90_test0 is 2.526316000000023
+Standard Deviation for SG_A+90_test0 is 1.5894388947046763
+
+Min for SP_A+90_test0 is 495
+Max for SP_A+90_test0 is 497
+Mean for SP_A+90_test0 is 496.204
+Variance for SP_A+90_test0 is 0.174384000000001
+Standard Deviation for SP_A+90_test0 is 0.41759310339132877
+
+
+***New Data***
+Min for SG_A+80_test1 is 476
+Max for SG_A+80_test1 is 480
+Mean for SG_A+80_test1 is 478.274
+Variance for SG_A+80_test1 is 0.6189240000000006
+Standard Deviation for SG_A+80_test1 is 0.7867172300134277
+
+Min for SP_A+80_test1 is 470
+Max for SP_A+80_test1 is 472
+Mean for SP_A+80_test1 is 471.042
+Variance for SP_A+80_test1 is 0.16023599999999857
+Standard Deviation for SP_A+80_test1 is 0.4002948912989005
+
+
+***New Data***
+Min for SG_A+70_test2 is 497
+Max for SG_A+70_test2 is 501
+Mean for SG_A+70_test2 is 499.436
+Variance for SG_A+70_test2 is 0.5899040000000012
+Standard Deviation for SG_A+70_test2 is 0.7680520815673904
+
+Min for SP_A+70_test2 is 409
+Max for SP_A+70_test2 is 411
+Mean for SP_A+70_test2 is 410.082
+Variance for SP_A+70_test2 is 0.13927599999999973
+Standard Deviation for SP_A+70_test2 is 0.3731969989161217
+
+
+***New Data***
+Min for SG_A+100_test3 is 443
+Max for SG_A+100_test3 is 448
+Mean for SG_A+100_test3 is 446.026
+Variance for SG_A+100_test3 is 0.9253239999999983
+Standard Deviation for SG_A+100_test3 is 0.9619376279156556
+
+Min for SP_A+100_test3 is 470
+Max for SP_A+100_test3 is 472
+Mean for SP_A+100_test3 is 471.098
+Variance for SP_A+100_test3 is 0.22039599999999734
+Standard Deviation for SP_A+100_test3 is 0.46946352360965954
+
+
+***New Data***
+Min for SG_A+110_test4 is 443
+Max for SG_A+110_test4 is 447
+Mean for SG_A+110_test4 is 445.534
+Variance for SG_A+110_test4 is 0.5488440000000021
+Standard Deviation for SG_A+110_test4 is 0.7408400637114614
+
+Min for SP_A+110_test4 is 456
+Max for SP_A+110_test4 is 458
+Mean for SP_A+110_test4 is 457.24
+Variance for SP_A+110_test4 is 0.21040000000000245
+Standard Deviation for SP_A+110_test4 is 0.45869379764719126
+

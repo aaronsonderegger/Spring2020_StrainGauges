@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from SelectFromCollection import SelectFromCollection
 
-DEBUG = True
+DEBUG = False
 
 '''
 TODO:
@@ -111,7 +111,39 @@ def DataSelection():
         plt.show()
 
 def PlotData():
-    print('TODO Implement this')
+    # Put data in list
+    data2Plot = list()
+    xLabels = list()
+    for k in AaronsData.keys():
+        xLabels.append(k)
+        data2Plot.append(AaronsData[k])
+
+    # Create Box Plot
+    fig = plt.figure(1,figsize=(9,6))
+    ax = fig.add_subplot(111)
+    bp = ax.boxplot(data2Plot, patch_artist=True, showmeans=True)
+
+    for box in bp['boxes']:
+        box.set(color='darkblue',linewidth=2)
+        box.set(facecolor='darkred')
+
+    for whisker in bp['whiskers']:
+        whisker.set(color='darkblue',linewidth=2)
+
+    for cap in bp['caps']:
+        cap.set(color='darkblue',linewidth=2)
+
+    for median in bp['medians']:
+        median.set(color='darkgreen',linewidth=2)
+
+    for flier in bp['fliers']:
+        flier.set(marker='o',color='darkred',alpha=0.5)
+
+    ax.set_xticklabels(xLabels)
+    ax.get_xaxis().tick_bottom()
+    ax.get_yaxis().tick_left()
+
+    plt.show()
 
 def ReadDataIn(fileName):
     loggedFile = open(fileName,"r")
@@ -125,9 +157,12 @@ def ReadDataIn(fileName):
             line = line.rstrip();
             line = line.split(',')
             for word in line:
-                key, listItem = word.split(':')
-                key += "_test" + str(testNumber)
-                AaronsData[key] = int(listItem)
+                try:
+                    key, listItem = word.split(':')
+                    key += "_test" + str(testNumber)
+                    AaronsData[key] = int(listItem)
+                except:
+                    print('couldn''t print line',word)
 
 def ReadCommandPrompt(argv):
     '''
@@ -158,10 +193,12 @@ def ReadCommandPrompt(argv):
                     help = 'Specified file for you to log or analyze from.')
     parser.add_argument('--dataSelect','-g',
                     dest = 'DATA_SELECT',
-                    type = bool,
-                    default = True,
+                    type = str,
+                    choices ={'True','False'},
+                    default = 'True',
                     help = 'Use the graphs to calculate specific data')
     arguments = parser.parse_args(argv[1:])
+
     return arguments
 # *** End Helper Functions ***
 
@@ -179,7 +216,10 @@ def LogDataFromArduino(fileName):
         loggingFile = open(fileName, "w")
 
     print("going into while loop")
-    while True:
+    SerialLogger.flushInput()
+    count = 0
+    print('\a')
+    while count < 500:
         try:
             ser_bytes = SerialLogger.readline()
             serialString = ser_bytes.decode()
@@ -192,7 +232,7 @@ def LogDataFromArduino(fileName):
             # writer = csv.writer(loggingFile,delimiter=",")
             # writer.writerow(serialString)
             # end = time.time()
-            print(serialString.rstrip())
+            # print(serialString.rstrip())
 
         except KeyboardInterrupt:
             print("Keyboard Interrupt")
@@ -207,7 +247,9 @@ def LogDataFromArduino(fileName):
             loggingFile.close()
             break
         finally:
+            count += 1
             pass # left empty not handling closing things since breaks code
+    print('\a')
 
 def LogDataFromSaleae(fileName):
     print('Logging Saleae')
@@ -256,7 +298,8 @@ def AnalyzeStatistics(fileName, selectData):
         ReadDataIn(fileName)
 
     # Plot the Data for me to select
-    DataSelection()
+    if selectData:
+        DataSelection()
     # PlotData()
     # Min and Max
     testMin = DataDictionary()
@@ -275,6 +318,12 @@ def AnalyzeStatistics(fileName, selectData):
             testMean[k] = sum(AaronsData[k])/len(AaronsData[k])
             testVariance[k] = sum([(x - testMean[k][0])**2 for x in AaronsData[k]])/len(AaronsData[k])
             testSD[k] = testVariance[k][0]**0.5
+        
+        if 'test' in k:
+            if int(k.split('test')[-1]) != currentTest:
+                resultsFile.write('\n')
+                resultsFile.write(TestSplitter)
+                currentTest += 1
 
         # Results for user
         resultsFile.write('Min for '                + k + ' is ' + str(testMin[k][0])      + '\n')
@@ -282,17 +331,17 @@ def AnalyzeStatistics(fileName, selectData):
         resultsFile.write('Mean for '               + k + ' is ' + str(testMean[k][0])     + '\n')
         resultsFile.write('Variance for '           + k + ' is ' + str(testVariance[k][0]) + '\n')
         resultsFile.write('Standard Deviation for ' + k + ' is ' + str(testSD[k][0])       + '\n')
+        resultsFile.write('\n')
 
-        if 'test' in k:
-            if int(k.split('test')[-1]) != currentTest:
-                resultsFile.write(TestSplitter)
-                currentTest += 1
 
         print('Min for',               k,'is',testMin[k][0])
         print('Max for',               k,'is',testMax[k][0])
         print('Mean for',              k,'is',testMean[k][0])
         print('Variance for',          k,'is',testVariance[k][0])
         print('Standard Deviation for',k,'is',testSD[k][0])
+        print()
+
+    PlotData()
 
 def GetArduinoIformation(fileName):
     '''
@@ -309,6 +358,11 @@ def GetArduinoIformation(fileName):
 if __name__ == "__main__":
     print('os shows as ',os.name)
     options = ReadCommandPrompt(sys.argv)
+
+    ChooseOptions = True
+    if options.DATA_SELECT.lower() == 'false':
+        ChooseOptions = False
+
 
     fileName = LoggedDataFolder + options.FILE + txtExtension
     # Data Logging Functions
@@ -329,10 +383,10 @@ if __name__ == "__main__":
     if options.STATISTICS == 'dont_run':
         print('Not running any anayzing program\n')
     elif options.STATISTICS.lower() == 'all':
-        AnalyzeStatistics(fileName, options.DATA_SELECT)
+        AnalyzeStatistics(fileName, ChooseOptions)
         GetArduinoIformation(fileName)
     elif options.STATISTICS.lower() == 'stats':
-        AnalyzeStatistics(fileName, options.DATA_SELECT)
+        AnalyzeStatistics(fileName, ChooseOptions)
     elif options.STATISTICS.lower() == 'arduino':
         GetArduinoIformation(fileName)
     else:
