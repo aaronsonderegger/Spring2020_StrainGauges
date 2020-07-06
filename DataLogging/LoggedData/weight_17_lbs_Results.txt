@@ -1,0 +1,82 @@
+Min for SG_A-10_test0 is 493
+Max for SG_A-10_test0 is 506
+Mean for SG_A-10_test0 is 496.424
+Variance for SG_A-10_test0 is 2.1082239999999866
+Standard Deviation for SG_A-10_test0 is 1.4519724515292936
+
+Min for SP_A-10_test0 is 277
+Max for SP_A-10_test0 is 278
+Mean for SP_A-10_test0 is 277.186
+Variance for SP_A-10_test0 is 0.151404000000001
+Standard Deviation for SP_A-10_test0 is 0.38910666917954645
+
+
+***New Data***
+Min for SG_A-10_test1 is 511
+Max for SG_A-10_test1 is 519
+Mean for SG_A-10_test1 is 515.44
+Variance for SG_A-10_test1 is 1.914400000000011
+Standard Deviation for SG_A-10_test1 is 1.383618444514242
+
+Min for SP_A-10_test1 is 280
+Max for SP_A-10_test1 is 281
+Mean for SP_A-10_test1 is 280.538
+Variance for SP_A-10_test1 is 0.24855600000000216
+Standard Deviation for SP_A-10_test1 is 0.49855390882030215
+
+
+***New Data***
+Min for SG_A0_test2 is 504
+Max for SG_A0_test2 is 519
+Mean for SG_A0_test2 is 512.896
+Variance for SG_A0_test2 is 7.489183999999974
+Standard Deviation for SG_A0_test2 is 2.736637352664758
+
+Min for SP_A0_test2 is 262
+Max for SP_A0_test2 is 263
+Mean for SP_A0_test2 is 262.056
+Variance for SP_A0_test2 is 0.052863999999999765
+Standard Deviation for SP_A0_test2 is 0.2299217258111981
+
+
+***New Data***
+Min for SG_A10_test3 is 454
+Max for SG_A10_test3 is 458
+Mean for SG_A10_test3 is 455.88
+Variance for SG_A10_test3 is 0.7336000000000038
+Standard Deviation for SG_A10_test3 is 0.8565045242145565
+
+Min for SP_A10_test3 is 319
+Max for SP_A10_test3 is 320
+Mean for SP_A10_test3 is 319.284
+Variance for SP_A10_test3 is 0.203343999999999
+Standard Deviation for SP_A10_test3 is 0.4509368026675124
+
+
+***New Data***
+Min for SG_A20_test4 is 436
+Max for SG_A20_test4 is 440
+Mean for SG_A20_test4 is 437.516
+Variance for SG_A20_test4 is 0.653744
+Standard Deviation for SG_A20_test4 is 0.8085443710768135
+
+Min for SP_A20_test4 is 304
+Max for SP_A20_test4 is 306
+Mean for SP_A20_test4 is 305.108
+Variance for SP_A20_test4 is 0.10433600000000046
+Standard Deviation for SP_A20_test4 is 0.3230108357315594
+
+
+***New Data***
+Min for SG_A30_test5 is 411
+Max for SG_A30_test5 is 419
+Mean for SG_A30_test5 is 415.908
+Variance for SG_A30_test5 is 2.175536000000006
+Standard Deviation for SG_A30_test5 is 1.4749698301999286
+
+Min for SP_A30_test5 is 287
+Max for SP_A30_test5 is 288
+Mean for SP_A30_test5 is 287.024
+Variance for SP_A30_test5 is 0.023424000000000035
+Standard Deviation for SP_A30_test5 is 0.15304901175767205
+

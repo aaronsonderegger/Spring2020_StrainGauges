@@ -1,0 +1,54 @@
+Min for SG_A-10_test0 is 391
+Max for SG_A-10_test0 is 398
+Mean for SG_A-10_test0 is 394.8
+Variance for SG_A-10_test0 is 1.8839999999999915
+Standard Deviation for SG_A-10_test0 is 1.372588794941876
+
+Min for SP_A-10_test0 is 43
+Max for SP_A-10_test0 is 44
+Mean for SP_A-10_test0 is 43.468
+Variance for SP_A-10_test0 is 0.24897600000000106
+Standard Deviation for SP_A-10_test0 is 0.49897494927100405
+
+
+***New Data***
+Min for SG_A0_test1 is 384
+Max for SG_A0_test1 is 397
+Mean for SG_A0_test1 is 392.184
+Variance for SG_A0_test1 is 6.058143999999965
+Standard Deviation for SG_A0_test1 is 2.4613297219186148
+
+Min for SP_A0_test1 is 60
+Max for SP_A0_test1 is 61
+Mean for SP_A0_test1 is 60.678
+Variance for SP_A0_test1 is 0.2183159999999995
+Standard Deviation for SP_A0_test1 is 0.4672429774753169
+
+
+***New Data***
+Min for SG_A10_test2 is 315
+Max for SG_A10_test2 is 324
+Mean for SG_A10_test2 is 317.976
+Variance for SG_A10_test2 is 2.6474240000000155
+Standard Deviation for SG_A10_test2 is 1.62709065512651
+
+Min for SP_A10_test2 is 46
+Max for SP_A10_test2 is 47
+Mean for SP_A10_test2 is 46.376
+Variance for SP_A10_test2 is 0.2346239999999987
+Standard Deviation for SP_A10_test2 is 0.484380016103058
+
+
+***New Data***
+Min for SG_A20_test3 is 280
+Max for SG_A20_test3 is 287
+Mean for SG_A20_test3 is 282.738
+Variance for SG_A20_test3 is 2.1973559999999748
+Standard Deviation for SG_A20_test3 is 1.4823481372471092
+
+Min for SP_A20_test3 is 41
+Max for SP_A20_test3 is 43
+Mean for SP_A20_test3 is 41.482
+Variance for SP_A20_test3 is 0.25367600000000284
+Standard Deviation for SP_A20_test3 is 0.5036625854676947
+
